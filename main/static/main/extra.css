@@ -1,0 +1,26 @@
+.is-horizontal-center {
+    justify-content: center;
+  }
+
+
+.image.is-256x256 {
+height: 256px;
+width: 256px;
+}
+
+
+.image.book-shape {
+  height: 196px;
+  width: 123px;
+  }
+  
+
+.image.is-200x200 {
+    height: 200px;
+    width: 200px;
+    }
+
+
+.book-card:hover{
+  box-shadow: 0 20px 10px rgba(10, 10, 10, 0.1), 0 0 0 1px #00000017;
+}

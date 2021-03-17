@@ -1,0 +1,71 @@
+{% extends 'main/base.html'%}
+{% load static %}
+{%block content%}
+
+<div class="section ">
+    <div class="columns">
+        <div class="column is-centered has-text-centered">
+            <div class="title">{{influencer.name}}</div>
+        </div>
+    </div>
+    <div class="columns"></div>
+        <div class=" is-flex is-horizontal-center column is-full is-centered has-text-centered">
+            <div class="image is-200x200 is-centered has-text-centered">
+                <img src="{{influencer.image.url}}" class="is-rounded" alt="">
+            </div>
+        </div>
+        <div class="column is-full has-text-centered">
+            {{influencer.description}}
+            <p>
+                Recomenda  {{influencer.book_count}} {%if influencer.book_count > 1%} livros {% else %} livro {% endif%}
+             </p>
+        </div>
+
+    </div>
+
+   </div>
+   <hr>
+<div class="section">
+    <div class="container">
+
+        <div class="subtitle">
+            <span class="icon">
+            <i class="fas fa-book"></i>
+        </span>
+        Livros Recomendados
+    </div>
+
+    <div class="columns is-multiline">
+    {% for book in influencer.recommended_books.all%}
+        <div class="column is-6 ">
+            <div class="card book-card has-shadow py-2">
+                <div class="columns">
+                    <div class="column">
+                        <div class="container mx-3 my-3">
+
+                            <div class="image mt-3 p-3 m-2"  style="width: 150px;">
+                                <img src="{{book.img_url}}" class="book-shape">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <p class="is-centered ">
+                            <b>
+                                <h3 class="">
+                                    {{book.title_en}}
+                                </h3>
+                            </b>
+                        </p>
+                    </div>
+                </div>
+
+ 
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+    
+</div>
+{%endblock%}
