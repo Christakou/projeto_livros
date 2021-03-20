@@ -17,7 +17,7 @@ class Book(models.Model):
     title_en = models.CharField(blank=True, null=True, max_length=250)
     author = models.CharField(null=True, max_length=250)
 
-    img_url = models.CharField(null=True, max_length=500)
+    img_url = models.CharField(blank=True,null=True, max_length=500)
     description = models.CharField(null=True, max_length=500)
     slug = models.CharField(null=True, max_length=250)
     aff_link = models.CharField(null=True, max_length=250)
