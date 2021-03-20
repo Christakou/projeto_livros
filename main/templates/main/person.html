@@ -14,8 +14,15 @@
                 <img src="{{influencer.image.url}}" class="is-rounded" alt="">
             </div>
         </div>
+        <div class="tags is-centered has-text-centered">
+            {% for tag in influencer.tags.all %}
+            <span class="tag" style="background-color:{{tag.color}};">{{tag.tagname}} </span>
+            {% endfor %}
+        </div>
         <div class="column is-full has-text-centered">
             {{influencer.description}}
+  
+  
             <p>
                 Recomenda  {{influencer.book_count}} {%if influencer.book_count > 1%} livros {% else %} livro {% endif%}
              </p>
