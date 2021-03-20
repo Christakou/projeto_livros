@@ -37,7 +37,7 @@ class Book(models.Model):
 
     def save(self, *args, **kwargs):
         if (self.img_url is None) and (self.isbn is not None):
-            self.img_url = f'http://covers.openlibrary.org/b/isbn/{self.isbn}-M.jpg'
+            self.img_url = f'http://covers.openlibrary.org/b/isbn/{self.isbn}-L.jpg'
         super(Book,self).save(*args, **kwargs)
 
 
