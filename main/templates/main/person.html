@@ -5,7 +5,7 @@
 <div class="section ">
     <div class="columns">
         <div class="column is-centered has-text-centered">
-            <div class="title">{{influencer.name}}</div>
+            <div class="title">Livros recomendados por <b>{{influencer.name}}</b></div>
         </div>
     </div>
     <div class="columns"></div>
@@ -24,7 +24,10 @@
   
   
             <p>
-                Recomenda  {{influencer.book_count}} {%if influencer.book_count > 1%} livros {% else %} livro {% endif%}
+                {{influencer.name}} recomenda  
+                <b>
+                    {{influencer.book_count}} {%if influencer.book_count > 1%} livros {% else %} livro {% endif%}
+                </b>
              </p>
         </div>
 

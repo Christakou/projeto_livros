@@ -3,7 +3,7 @@
   <nav class="navbar">
     <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item" href="../">
+        <a class="navbar-item" href="{% url 'homepage' %}">
           <img src="{% static 'main/images/logo.png' %}" style='max-height: 3.5rem;' alt="Logo">
         </a>
         <span class="navbar-burger burger" data-target="navbarMenu">
@@ -22,14 +22,14 @@
               </span>
             </div>
           </div>
-          <a class="navbar-item is-active is-size-5 has-text-weight-semibold">
+          <a class="navbar-item is-active is-size-5 has-text-weight-semibold" href="{% url 'homepage' %}">
             Home
           </a>
-          <a class="navbar-item is-size-5 has-text-weight-semibold">
-            Examples
+          <a class="navbar-item is-size-5 has-text-weight-semibold" href="{% url 'people' %}">
+            Pessoas
           </a>
           <a class="navbar-item is-size-5 has-text-weight-semibold">
-            Features
+            Blog
           </a>
         </div>
       </div>
