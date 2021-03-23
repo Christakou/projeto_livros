@@ -27,10 +27,6 @@
             <figure class=" is-inline-block is-flex  has-text-centered is-centered image is-128x128 is-rounded">
                 <img class="is-horizontal-center is-128x128 is-rounded is-small" src={{person.image.url}} alt="">
             </figure>
-            <p class="is-centered">
-                {{person.description}}
-
-            </p>
             <p>
                 <div class="tags is-centered has-text-centered mb-0 ">
                     {% for tag in person.tags.all %}
