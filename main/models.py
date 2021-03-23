@@ -12,7 +12,7 @@ class ColorField(models.CharField):
         return super(ColorField, self).formfield(**kwargs)
 
 class Book(models.Model):  
-    title_pt = models.CharField(null=True,max_length=250)
+    title_pt = models.CharField(null=True ,blank=True ,max_length=250)
     isbn = models.CharField(null=True, max_length=250)
     title_en = models.CharField(blank=True, null=True, max_length=250)
     author = models.CharField(null=True, max_length=250)
