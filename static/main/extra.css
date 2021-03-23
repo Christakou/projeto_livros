@@ -25,6 +25,12 @@ width: 256px;
   box-shadow: 0 20px 10px rgba(10, 10, 10, 0.1), 0 0 0 1px #00000017;
 }
 
-.b.a {
+a {
   color: #00d1b2;
+}
+
+.button.is-tiny {
+  border-radius: 1.5px;
+  font-size: 0.6rem;
+  padding: 0.5rem;
 }

@@ -8,5 +8,8 @@ class InfluencerAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 
-admin.site.register(Book)
+@admin.register(Book)
+class BookAdmin(admin.ModelAdmin):
+    search_fields = ['title_pt','title_en']
+
 admin.site.register(Tag)

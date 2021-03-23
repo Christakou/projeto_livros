@@ -18,9 +18,9 @@ class Book(models.Model):
     author = models.CharField(null=True, max_length=250)
 
     img_url = models.CharField(blank=True,null=True, max_length=500)
-    description = models.CharField(null=True, max_length=500)
-    slug = models.CharField(null=True, max_length=250)
-    aff_link = models.CharField(null=True, max_length=250)
+    description = models.CharField(null=True, blank=True, max_length=500)
+    slug = models.CharField(null=True, blank=True, max_length=250)
+    aff_link = models.CharField(null=True, blank=True, max_length=250)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -38,6 +38,8 @@ class Book(models.Model):
     def save(self, *args, **kwargs):
         if (self.img_url is None) and (self.isbn is not None):
             self.img_url = f'http://covers.openlibrary.org/b/isbn/{self.isbn}-L.jpg'
+        if (self.aff_link is None) and (self.isbn is not None):
+            self.aff_link = f'https://www.amazon.com.br/s?k={self.isbn}&__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss'
         super(Book,self).save(*args, **kwargs)
 
 

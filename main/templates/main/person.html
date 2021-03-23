@@ -48,28 +48,78 @@
     <div class="columns is-multiline">
     {% for book in influencer.recommended_books.all%}
         <div class="column is-6 ">
-            <div class="card book-card has-shadow py-2">
+            <div class="card book-card has-shadow py-1">
+                <div class="card-header">
+
+                    <div class="card-header-title has-text-centered">
+                        <p class="title is-4 has-text-centered">{% if book.title_pt %} {{book.title_pt}} {% else %} {{book.title_en}} {% endif %}</p>
+                    </div>
+                    <div class="card-header-icon px-3">
+                        <span class="icon">
+                            <span>{{book.recommended_count}}</span><i class=" px-3 mr-2 fas fa-book-reader"></i>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="column">
+                    <p class="subtitle is-full">{{book.author}}</p>
+                </div>
                 <div class="columns">
                     <div class="column">
-                        <div class="container mx-3 my-3">
+                        <div class="container mx-3 my-3 mb-0">
 
                             <div class="image mt-3 p-3 m-2"  style="width: 150px;">
                                 <img src="{{book.img_url}}" class="book-shape">
                             </div>
                         </div>
                     </div>
-                    <div class="column">
-                        <p class="is-centered ">
-                            <b>
-                                <h3 class="">
-                                    {{book.title_en}}
-                                </h3>
-                            </b>
+                    <div class="column is-8 mx-1 px-2">
+                        {% if book.recommended_count > 1%}
+                        <p class="is-centered px-2 has-text-grey mt-1 ">
+                                {{influencer.name}} e outras <b>{{book.recommended_count}} celebridades</b> recomendam <i>
+                                    {% if book.title_pt %} {{book.title_pt}} {% else %} {{book.title_en}}{% endif %}
+                                </i>
                         </p>
+                        {% else %}
+                        <p class="is-centered px-2 has-text-grey">
+                            {{influencer.name}} recomenda <i>
+                            {% if book.title_pt %} {{book.title_pt}} {% else %} {{book.title_en}}{% endif %}
+                            </i>
+                        </p>
+                        {% endif %}    
+
+                        <a href="{{book.aff_link}}">
+                           <div class=" has-text-centered is-flex px-5 mx-6 button mt-5 display is-medium is-black">
+                                Comprar na Amazon
+                            </div>
+                        </a>
                     </div>
                 </div>
+   
+                {% if book.recommended_count > 1%}
+                <div class="px-3 has-text-grey is-size-7 ">
+                    Tambem recomendado por:
+                </div>
+                {% endif %}
+                <footer class="card-footer">
+                   
 
- 
+                    {% if book.recommended_count > 1%}
+                    <p>
+                        <div class="buttons px-1 py-1">
+                         
+                            {% for recommender in book.influencer_who_recommends.all %}
+                                {% if recommender.name != influencer.name %}
+                                    <a href="{% url 'ppl' recommender.slug %}">
+                                        <button class="button is-primary is-tiny is-inverted mx-1">{{recommender.name}}</button>
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </p>
+                    {% endif %}
+            
+                </footer>
             </div>
         </div>
         {% endfor %}

@@ -32,14 +32,14 @@
 
             </p>
             <p>
-                <div class="tags is-centered has-text-centered">
+                <div class="tags is-centered has-text-centered mb-0 ">
                     {% for tag in person.tags.all %}
                     <span class="tag" style="background-color:{{tag.color}};">{{tag.tagname}} </span>
                     {% endfor %}
                 </div>
             </p>
  
-            <p>
+            <p class="my-0">
                Recomenda  {{person.book_count}} {%if person.book_count > 1%} livros {% else %} livro {% endif%}
             </p>
         </div>

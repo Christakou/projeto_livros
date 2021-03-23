@@ -26,5 +26,11 @@ width: 256px;
 }
 
 a {
-  color: #00d1b2;
+  color: #000000;
+}
+
+.button.is-tiny {
+  border-radius: 1.5px;
+  font-size: 0.65rem;
+  padding: 0.5rem;
 }
