@@ -13,13 +13,14 @@ class ColorField(models.CharField):
 
 class Book(models.Model):  
     title_pt = models.CharField(null=True ,blank=True ,max_length=250)
-    isbn = models.CharField(null=True, max_length=250)
+    isbn_en = models.CharField(null=True, blank=True, max_length=250)
+    isbn_pt = models.CharField(null=True,blank=True,max_length=250)
     title_en = models.CharField(blank=True, null=True, max_length=250)
-    author = models.CharField(null=True, max_length=250)
+    language = models.CharField(blank=True, null=True, max_length=250)
+    author = models.CharField(blank=True, null=True, max_length=250)
 
     img_url = models.CharField(blank=True,null=True, max_length=500)
     description = models.CharField(null=True, blank=True, max_length=500)
-    slug = models.CharField(null=True, blank=True, max_length=250)
     aff_link = models.CharField(null=True, blank=True, max_length=250)
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -36,10 +37,22 @@ class Book(models.Model):
 
 
     def save(self, *args, **kwargs):
-        if (self.img_url is None) and (self.isbn is not None):
-            self.img_url = f'http://covers.openlibrary.org/b/isbn/{self.isbn}-L.jpg'
-        if (self.aff_link is None) and (self.isbn is not None):
-            self.aff_link = f'https://www.amazon.com.br/s?k={self.isbn}&__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss'
+        if (self.title_pt is None) and (self.title_en is not None):
+            self.language = 'en'
+        elif (self.title_pt is not None):
+            self.language = 'pt'
+        
+        #TODO: change this so we search based on title rather than ISBN
+        if (self.aff_link is None) and (self.title_pt is not None):
+            try:
+                self.aff_link = f'https://www.amazon.com.br/s?k={str(self.title_pt).replace(" ","+")}&__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss'
+            except Exception as e:
+                print(f'{str(e)}')
+        elif (self.aff_link is None ) and (self.title_en is not None):
+            try:
+                self.aff_link = f'https://www.amazon.com.br/s?k={str(self.title_en).replace(" ","+")}&__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&ref=nb_sb_noss'
+            except Exception as e:
+                print(f'{str(e)}')
         super(Book,self).save(*args, **kwargs)
 
 
