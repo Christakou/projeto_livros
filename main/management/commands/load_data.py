@@ -60,3 +60,6 @@ def second_loader():
             except Exception as e:
                 print(f'An exception occured when trying to add books for {celeb},\
                     trying to add row: {row} \n got the following exception: {str(e)}')
+
+
+### testing a change
