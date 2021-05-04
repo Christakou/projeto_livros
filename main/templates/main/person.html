@@ -1,6 +1,7 @@
 {% extends 'main/base.html'%}
 {% load static %}
 {%block content%}
+{% load custom_tags %}
 
 <div class="section ">
     <div class="columns">
@@ -52,7 +53,7 @@
                 <div class="card-header">
 
                     <div class="card-header-title has-text-centered">
-                        <p class="title is-4 has-text-centered">{% if book.title_pt %} {{book.title_pt}} {% else %} {{book.title_en}} {% endif %}</p>
+                        <p class="title is-4 has-text-centered"> {% modify_name book %}</p>
                     </div>
                     <div class="card-header-icon px-3">
                         <span class="icon">
@@ -77,13 +78,13 @@
                         {% if book.recommended_count > 1%}
                         <p class="is-centered px-2 has-text-grey mt-1 ">
                                 {{influencer.name}} e outras <b>{{book.recommended_count}} celebridades</b> recomendam <i>
-                                    {% if book.title_pt %} {{book.title_pt}} {% else %} {{book.title_en}}{% endif %}
+                                    {% modify_name book %}
                                 </i>
                         </p>
                         {% else %}
                         <p class="is-centered px-2 has-text-grey">
                             {{influencer.name}} recomenda <i>
-                            {% if book.title_pt %} {{book.title_pt}} {% else %} {{book.title_en}}{% endif %}
+                                {% modify_name book %}
                             </i>
                         </p>
                         {% endif %}    
