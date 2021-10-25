@@ -68,7 +68,7 @@ class Tag(models.Model):
         super(Tag,self).save(*args,**kwargs)
 
 class Influencer(models.Model):
-    image = ResizedImageField(size=[300, 300], crop=['middle', 'center'],null=True, default='media/faustao.jpg')
+    image = ResizedImageField(size=[150, 150], crop=['middle', 'center'],null=True, default='media/faustao.jpg')
     name = models.CharField(null=False, max_length=250)
     recommended_books = models.ManyToManyField(Book,blank=True, related_name='influencer_who_recommends')
     written_books = models.ManyToManyField(Book,blank=True, related_name='influencer_who_wrote')
