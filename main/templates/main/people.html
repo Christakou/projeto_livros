@@ -1,7 +1,6 @@
 {% extends 'main/base.html'%}
 {%block content%}
 {% load static %}
-{% load thumbnail %}
 <div class="section">
    <div class=" mt-6 title has-text-centered">Celebridades</div>
    <div class="mt-5 subtitle has-text-centered">Aqui voce encontrara as celebridades que recomendaram livros.</div>
@@ -26,17 +25,7 @@
   
 
             <figure class=" is-inline-block is-flex  has-text-centered is-centered image is-128x128 is-rounded">
-                <img src="{% thumbnail person.image '1920' as im %}{{ im.url }}{% endthumbnail %}"
-                    srcset="
-                        {% thumbnail person.image '544' as im %}  {{ im.url }} {{ im.x }}w{% endthumbnail %},
-                        {% thumbnail person.image '768' as im %}  {{ im.url }} {{ im.x }}w{% endthumbnail %},
-                        {% thumbnail person.image '992' as im %}  {{ im.url }} {{ im.x }}w{% endthumbnail %},
-                        {% thumbnail person.image '1200' as im %}  {{ im.url }} {{ im.x }}w{% endthumbnail %},
-                        {% thumbnail person.image '1920' as im %}  {{ im.url }} {{ im.x }}w{% endthumbnail %}"
-                    alt="Livros recomendados por {{person.name}} "
-                    sizes="100vw"
-                />
-               <!--  <img class="is-horizontal-center is-128x128 is-rounded is-small" src={{person.image.url}} alt=""> -->
+                <img class="is-horizontal-center is-128x128 is-rounded is-small" src={{person.image.url}} alt="">
             </figure>
             <p>
                 <div class="tags is-centered has-text-centered mb-0 ">
