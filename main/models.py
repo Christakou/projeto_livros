@@ -1,7 +1,7 @@
 from django.db import models
 from .utils import convert_name_to_slug, random_color
 from django_resized import ResizedImageField
-
+from sorl.thumbnail import ImageField
 
 class ColorField(models.CharField):
     def __init__(self, *args, **kwargs):
