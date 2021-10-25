@@ -33,7 +33,7 @@
                         {% thumbnail person.image '992' as im %}  {{ im.url }} {{ im.x }}w{% endthumbnail %},
                         {% thumbnail person.image '1200' as im %}  {{ im.url }} {{ im.x }}w{% endthumbnail %},
                         {% thumbnail person.image '1920' as im %}  {{ im.url }} {{ im.x }}w{% endthumbnail %}"
-                    alt="{%person.name%}"
+                    alt="Livros recomendados por {{person.name}} "
                     sizes="100vw"
                 />
                <!--  <img class="is-horizontal-center is-128x128 is-rounded is-small" src={{person.image.url}} alt=""> -->
