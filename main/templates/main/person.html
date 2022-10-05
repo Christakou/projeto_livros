@@ -6,7 +6,7 @@
 <div class="section ">
     <div class="columns">
         <div class="column is-centered has-text-centered">
-            <div class="title">Livros recomendados por <b>{{influencer.name}}</b></div>
+            <h2 class="title">Livros mais recomendados por <b>{{influencer.name}}</b></div>
         </div>
     </div>
     <div class="columns"></div>
@@ -77,7 +77,7 @@
                     <div class="column is-8 mx-1 px-2">
                         {% if book.recommended_count > 1%}
                         <p class="is-centered px-2 has-text-grey mt-1 ">
-                                {{influencer.name}} e outras <b>{{book.recommended_count}} celebridades</b> recomendam <i>
+                                {{influencer.name}} e outras <b>{{book.recommended_count}} celebridades</b> recomendam o livro<i>
                                     {% modify_name book %}
                                 </i>
                         </p>
@@ -99,7 +99,7 @@
    
                 {% if book.recommended_count > 1%}
                 <div class="px-3 has-text-grey is-size-7 ">
-                    Tambem recomendado por:
+                    Este livro tambem é recomendado por:
                 </div>
                 {% endif %}
                 <footer class="card-footer">
