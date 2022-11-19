@@ -1,8 +1,9 @@
 {% extends 'main/base.html'%}
 {% load static %}
 {% block content %}
-
-<section class="hero is-white is-fullheight">
+<!-- load stylesheet -->
+<link rel="stylesheet" href="{% static 'main/css/addons.css' %}">
+<section class="hero is-white mt-5">
   <div class="hero-body">
     <div class="container">
       <div class="columns  is-vcentered reverse-columns">
@@ -13,10 +14,11 @@
         is-5-widescreen is-offset-1-widescreen
         is-5-fullhd is-offset-1-fullhd" data-aos="fade-down">
           <h1 class="title titled is-1 mb-6">
-            Você está Lendo Bem? 
+            Você está Lendo Bem?
           </h1>
           <h2 class=" subtitled subtitle has-text-grey is-4 has-text-weight-normal is-family-sans-serif">
-            Livros podem mudar sua vida. Por isso, nós selecionamos os livros recomendados pelas pessoas mais influentes e respeitadas do Brasil e do Mundo.
+            Livros podem mudar sua vida. Por isso, nós selecionamos os livros recomendados pelas pessoas mais influentes
+            e respeitadas do Brasil e do Mundo.
           </h2>
           <div class="buttons">
             <a href="{% url 'people' %}">
@@ -37,6 +39,45 @@
 
       </div>
     </div>
+
+  </div>
+</section>
+<hr>
+<section class="carousel hidden-mobile is-light-gray" aria-label="Gallery">
+  <div class="mt-5 h1 has-text-centered">
+    <h1 class="  title is-2 mt-5">Descubra os livros mais recomendados por celebridades e especialistas</h1>
+  </div>
+  <br>
+  <div class="slide-container">
+
+    <div class="image-slider">
+      {% for influencer in featured_influencers%}
+
+
+      <div class="slide-div" id="slide-1">
+        <a href="{% url 'ppl' influencer.slug %}">
+
+          <div class="is-flex">
+            <p>
+              {{influencer.name}} recomenda {{influencer.book_count}} livros 
+          </div>
+
+          <div class=" is-flex is-horizontal-center column is-full is-centered has-text-centered">
+            
+            <div class="image is-200x200 is-centered has-text-centered">
+              <img src="{{influencer.image.url}}" class="is-rounded" alt="livros recomendados por {{influencer.name}}">
+            </div>
+          </div>
+          <div class="tags is-centered has-text-centered">
+            {% for tag in influencer.tags.all %}
+            <span class="tag" style="background-color:{{tag.color}};">{{tag.tagname}} </span>
+            {% endfor %}
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+
   </div>
 </section>
 {% endblock %}

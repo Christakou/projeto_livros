@@ -4,7 +4,13 @@ from django.shortcuts import render, redirect
 from .models import Book, Influencer
 
 class HomePageView(TemplateView):
-    template_name = "main/home.html"
+
+    def get(self, request, **kwargs):
+        filtered_list = ['Elon Musk','Bill Gates', 'Barack Obama']
+        featured_people = Influencer.objects.filter(name__in=filtered_list)
+        context = {"featured_influencers":featured_people}
+        return render(request, 'main/home.html', context=context)
+
 
 class PeopleView(View):
 
@@ -13,7 +19,7 @@ class PeopleView(View):
         return render(request,'main/people.html',{'people': influencers})
         
 
-class PersonView(View):
+class PersonView(View): 
     def get(self, request, *args, **kwargs):
         slug= kwargs.get('slug')
         influencer = Influencer.objects.filter(slug=slug).first()

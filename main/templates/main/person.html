@@ -12,7 +12,7 @@
     <div class="columns"></div>
         <div class=" is-flex is-horizontal-center column is-full is-centered has-text-centered">
             <div class="image is-200x200 is-centered has-text-centered">
-                <img src="{{influencer.image.url}}" class="is-rounded" alt="">
+                <img src="{{influencer.image.url}}" class="is-rounded" alt="livros recomendados por {{influencer.name}}">
             </div>
         </div>
         <div class="tags is-centered has-text-centered">
@@ -40,10 +40,14 @@
     <div class="container">
 
         <div class="subtitle">
+
+        <h2>
             <span class="icon">
-            <i class="fas fa-book"></i>
-        </span>
-        Livros Recomendados
+                <i class="fas fa-book"></i>
+            </span>
+            Quais são os {{influencer.book_count}} livros recomendados por {{influencer.name}}?
+        </h2>
+   
     </div>
 
     <div class="columns is-multiline">
@@ -53,7 +57,7 @@
                 <div class="card-header">
 
                     <div class="card-header-title has-text-centered">
-                        <p class="title is-4 has-text-centered"> {% modify_name book %}</p>
+                        <h3 class="title is-4 has-text-centered"> {% modify_name book %}</h3>
                     </div>
                     <div class="card-header-icon px-3">
                         <span class="icon">
@@ -70,7 +74,7 @@
                         <div class="container mx-3 my-3 mb-0">
 
                             <div class="image mt-3 p-3 m-2"  style="width: 150px;">
-                                <img src="{{book.img_url}}" class="book-shape">
+                                <img src="{{book.img_url}}" class="book-shape" alt="{% modify_name book %} livro recomendado por {{influencer.name}}">
                             </div>
                         </div>
                     </div>
