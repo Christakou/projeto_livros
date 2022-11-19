@@ -31,6 +31,53 @@ a {
 
 .button.is-tiny {
   border-radius: 1.5px;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   padding: 0.5rem;
+}
+
+
+
+.slide-container{
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  flex-direction: column;
+  margin: 20px;
+}
+
+
+
+.mt-20{
+  margin-top: 20px;
+}
+
+.image-slider{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.slide-div{
+  width: 33%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.no-wrap{
+  flex-wrap: nowrap;
+}
+
+
+@media (max-width: 767px) {
+  .hidden-mobile {
+    display: none;
+  }
 }
