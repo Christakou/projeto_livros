@@ -5,6 +5,7 @@
 <meta name="description" content="Descubra aqui sua proxima leitura. Temos listas com os melhores livros recomendados por famosos, celebridades, grandes empresarios, artistas e influencers. Descubra aqui sua proxima leitura.">
 
 <link rel="stylesheet" href="{% static 'main/css/addons.css' %}">
+
 <section class="hero is-white mt-5">
   <div class="hero-body">
     <div class="container">
@@ -44,42 +45,76 @@
 
   </div>
 </section>
-<hr>
-<section class="carousel hidden-mobile is-light-gray" aria-label="Gallery">
-  <div class="mt-5 h1 has-text-centered">
-    <h1 class="  title is-2 mt-5">Descubra os livros mais recomendados por celebridades e especialistas</h1>
-  </div>
-  <br>
-  <div class="slide-container">
+<hr><div class="section hidden-mobile">
+  <div class="slider">
+      <div class="slide-track">
+          {% for person in featured_influencers %}
+          <div class="slide slide-div">
+            <a href="{% url 'ppl' person.slug %}">
 
-    <div class="image-slider">
-      {% for influencer in featured_influencers%}
-
-
-      <div class="slide-div" id="slide-1">
-        <a href="{% url 'ppl' influencer.slug %}">
-
-          <div class="is-flex">
-            <p>
-              {{influencer.name}} recomenda {{influencer.book_count}} livros 
-          </div>
-
-          <div class=" is-flex is-horizontal-center column is-full is-centered has-text-centered">
-            
-            <div class="image is-200x200 is-centered has-text-centered">
-              <img src="{{influencer.image.url}}" class="is-rounded" alt="livros recomendados por {{influencer.name}}">
-            </div>
-          </div>
-          <div class="tags is-centered has-text-centered">
-            {% for tag in influencer.tags.all %}
-            <span class="tag" style="background-color:{{tag.color}};">{{tag.tagname}} </span>
+              <div class=" column m-3 px-2 py-2 is-flex is-column is-centered has-text-centered">
+                <p>
+                  <b>
+                      {{person.name}}
+                    </b>
+                  </p>
+                  
+                  
+                  
+                  <div class=" is-flex  has-text-centered is-centered image is-128x128 is-rounded">
+                    <img class="is-horizontal-center is-128x128 is-rounded is-small is-horizontal-center" src={{person.image.url}} alt="">
+                  </div>
+                  <p>
+                    <div class="tags is-centered has-text-centered is-flex mb-0 ">
+                      {% for tag in person.tags.all %}
+                      <span class="tag" style="background-color:{{tag.color}};">{{tag.tagname}} </span>
+                      {% endfor %}
+                    </div>
+                  </p>
+                  
+                  <p class="my-0">
+                    Recomenda  {{person.book_count}} {%if person.book_count > 1%} livros {% else %} livro {% endif%}
+                  </p>
+                </div>
+                
+              </div>
+              
+              </a>
             {% endfor %}
-          </div>
-        </a>
-      </div>
-      {% endfor %}
-    </div>
-
+            {% for person in featured_influencers %}
+            <div class="slide slide-div">
+              <a href="{% url 'ppl' person.slug %}">
+  
+                <div class=" column m-3 px-2 py-2 is-flex is-column is-centered has-text-centered">
+                  <p>
+                    <b>
+                        {{person.name}}
+                      </b>
+                    </p>
+                    
+                    
+                    
+                    <div class=" is-flex  has-text-centered is-centered image is-128x128 is-rounded">
+                      <img class="is-horizontal-center is-128x128 is-rounded is-small is-horizontal-center" src={{person.image.url}} alt="">
+                    </div>
+                    <p>
+                      <div class="tags is-centered has-text-centered is-flex mb-0 ">
+                        {% for tag in person.tags.all %}
+                        <span class="tag" style="background-color:{{tag.color}};">{{tag.tagname}} </span>
+                        {% endfor %}
+                      </div>
+                    </p>
+                    
+                    <p class="my-0">
+                      Recomenda  {{person.book_count}} {%if person.book_count > 1%} livros {% else %} livro {% endif%}
+                    </p>
+                  </div>
+                  
+                </div>
+                
+                </a>
+              {% endfor %}
+              </div>
   </div>
-</section>
+</div>
 {% endblock %}
