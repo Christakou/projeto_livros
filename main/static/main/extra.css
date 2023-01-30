@@ -85,3 +85,29 @@ a {
     display: none;
   }
 }
+
+
+.navbar-item {
+  display: flex;
+  background-color: transparent !important;
+  align-items: center;
+  width: 79.75px;
+
+}
+@media (max-width: 1024px) {
+  .navbar-item {
+
+    display: flex;
+    background-color: transparent !important;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+  }
+  .navbar-menu{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+}
+  
+}
