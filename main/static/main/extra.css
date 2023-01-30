@@ -91,7 +91,6 @@ a {
   display: flex;
   background-color: transparent !important;
   align-items: center;
-  width: 79.75px;
 
 }
 @media (max-width: 1024px) {
@@ -100,7 +99,6 @@ a {
     display: flex;
     background-color: transparent !important;
     align-items: center;
-    width: 100%;
     flex-direction: column;
   }
   .navbar-menu{
