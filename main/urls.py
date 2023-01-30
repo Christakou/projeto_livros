@@ -7,7 +7,8 @@ urlpatterns = [
     path('robots.txt', TemplateView.as_view(template_name='robots.txt')),
     path("", views.HomePageView.as_view(), name="homepage"),
     path("pessoas/",views.PeopleView.as_view(),name="people"),
-        path('livros-recomendados-por-<str:slug>/',views.PersonView.as_view(), name="ppl"),
-    #path("register/", views.RegisterView.as_view(), name="register"),
+    path('livros-recomendados-por-<str:slug>/',views.PersonView.as_view(), name="ppl"),
+    path('<str:slug>/',views.PersonRedirectView.as_view(), name="ppl"),
+
     
 ]

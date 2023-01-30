@@ -45,3 +45,12 @@ class PersonView(View):
             return (redirect('/'))
         else:
             return render(request, 'main/person.html', {'influencer': influencer})
+
+class PersonRedirectView(View):
+    def get(self, request, *args, **kwargs):
+        slug = kwargs.get('slug')
+        influencer = Influencer.objects.filter(slug=slug).first()
+        if influencer is None:
+            return (redirect('/'))
+        else:
+            return redirect(f"/livros-recomendados-por-{slug}/")
